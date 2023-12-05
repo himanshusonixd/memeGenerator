@@ -10,7 +10,11 @@ export default function Text(){
    const[edit ,setEdit]= useState(false)
 
    
+   const [showButton, setShowButton] = useState(true);
 
+   const toggleButton = () => {
+     setShowButton(!showButton);
+   };
   
 
 
@@ -25,13 +29,19 @@ export default function Text(){
          } */}
 
 <Draggable>
-        <h1>{value}</h1>
+        <h1 onClick={toggleButton}>{value}</h1>
        
         </Draggable>
-       <Draggable>
-       <input className="inputfield" type="text" value={value} onChange={e=>setvalue(e.target.value)} onDrag={console.log("did a drag")} />
+        <div id="addtext">
+        {showButton && <input  className="inputfield" type="text" value={value} onChange={e=>setvalue(e.target.value)} onDrag={console.log("did a drag")} /> }
+     
       
-       </Draggable>
+     {showButton && <button id="addtext" className="button-11"  onClick={toggleButton}>hide</button>}
+    
+      
+        </div>
+       
+     
         
     </div>
 
